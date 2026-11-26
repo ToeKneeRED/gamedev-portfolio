@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -16,14 +15,15 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Resume.vue')
   },
   {
-    path: '/game-projects',
+    // optional :projectId opens that project's details, e.g. /game-projects/dherth
+    path: '/game-projects/:projectId?',
     name: 'Game Projects',
     component: () => import(/* webpackChunkName: "about" */ '../views/GameProjects.vue')
   },
   {
-    path: '/other-projects',
-    name: 'Other Projects',
-    component: () => import(/* webpackChunkName: "about" */ '../views/OtherProjects.vue')
+    path: '/game-features/:projectId?',
+    name: 'Game Features',
+    component: () => import(/* webpackChunkName: "about" */ '../views/GameFeatures.vue')
   },
   {
     path: '/contact',
@@ -42,7 +42,19 @@ const routes: Array<RouteConfig> = [
 ]
 
 const router = new VueRouter({
-  routes
+  // clean URLs (no #). Firebase rewrites every path to index.html, and the dev server does the same
+  mode: 'history',
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    // opening or closing a project stays on the same page, so keep the scroll position
+    if (to.name === from.name) {
+      return undefined;
+    }
+    return { x: 0, y: 0 };
+  }
 })
 
 export default router

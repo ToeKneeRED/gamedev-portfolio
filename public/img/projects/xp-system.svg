@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#1d2433"/>
+  <text x="200" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="64" letter-spacing="6" fill="#e6e9ef">XP</text>
+  <rect x="80" y="225" width="240" height="18" rx="9" fill="#2f3a52"/>
+  <rect x="80" y="225" width="165" height="18" rx="9" fill="#4fa3ff"/>
+  <text x="200" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" fill="#8a96ad">LEVEL 42 · PRESTIGE 3</text>
+</svg>

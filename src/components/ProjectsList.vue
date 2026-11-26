@@ -7,7 +7,13 @@
               @click="showDetails(project)"
               class="project-item"
               :class="{ 'wide': project.isWide, 'high': project.isHigh }">
-            <div class="project-item-image" :style="{ 'background-image': 'url(' + project.iconUrl + ')' }">
+            <video
+              v-if="isVideo(project.iconUrl)"
+              class="project-item-image"
+              :src="project.iconUrl"
+              autoplay muted loop playsinline>
+            </video>
+            <div v-else class="project-item-image" :style="{ 'background-image': 'url(' + project.iconUrl + ')' }">
             </div>
             <div class="title-bar" :style="{ 'background-color': project.accentColor + 'DD' }">
                 <div class="title-text">
@@ -19,7 +25,7 @@
       </div>
 
       <ProjectDetailsOverlay
-        v-on:close="showPopup = false"
+        v-on:close="closeDetails"
         :visible="showPopup"
         :title="popupTitle"
         :htmlContent="popupContent"
@@ -31,15 +37,21 @@
 <script lang="ts">
 import Vue from "vue";
 import ProjectDetailsOverlay from "@/components/ProjectDetailsOverlay.vue";
-import ProjectData from "@/data/ProjectData.ts";
+import ProjectData from "@/data/ProjectData";
 
+// Three ways to open a project:
+// - basePath set (e.g. "/game-projects"): each project gets its own URL, basePath/<id>, which opens its details
+// - links set (id -> path): clicking a card goes to that path instead (used for the featured cards on the home page)
+// - neither: the details open in place
 export default Vue.extend({
   name: "ProjectsList",
   components: {
     ProjectDetailsOverlay,
   },
   props: {
-    projects: Array
+    projects: Array,
+    basePath: String,
+    links: Object
   },
   data: function () {
     return {
@@ -49,16 +61,53 @@ export default Vue.extend({
       popupContent: ""
     };
   },
+  watch: {
+    "$route.params.projectId": {
+      immediate: true,
+      handler: function (id: string | undefined) {
+        if (!this.basePath) {
+          return;
+        }
+        if (!id) {
+          this.showPopup = false;
+          return;
+        }
+        const project = (this.projects as ProjectData[]).find(p => p.id === id);
+        if (project) {
+          this.openPopup(project);
+        } else {
+          // unknown project id: drop it from the URL
+          this.$router.replace(this.basePath);
+        }
+      }
+    }
+  },
   methods: {
-    showDetails: function (item: ProjectData) {
-      // if (event) {
-      //   alert(event.target);
-      // }
+    isVideo: function (url: string) {
+      return /\.(mp4|webm)$/i.test(url);
+    },
+    openPopup: function (item: ProjectData) {
       this.popupTitle = item.name;
       this.popupColor = item.accentColor;
       this.popupContent = item.htmlDescription;
       this.showPopup = true;
-      window.scrollTo(0,0);
+    },
+    showDetails: function (item: ProjectData) {
+      const links = this.links as Record<string, string> | undefined;
+      if (links && links[item.id]) {
+        this.$router.push(links[item.id]);
+      } else if (this.basePath) {
+        this.$router.push(this.basePath + "/" + item.id);
+      } else {
+        this.openPopup(item);
+      }
+    },
+    closeDetails: function () {
+      if (this.basePath && this.$route.params.projectId) {
+        this.$router.push(this.basePath);
+      } else {
+        this.showPopup = false;
+      }
     },
   },
 });
@@ -76,6 +125,8 @@ export default Vue.extend({
 }
 
 .project-item-image {
+  display: block;
+  object-fit: cover;
   background-size: cover;
   background-position: center;
   height: 100%;

@@ -3,6 +3,7 @@
     <div v-if="visible">
       <div class="overlay">
       </div>
+      <div class="dialog-scroller" @click.self="$emit('close')">
       <div class="dialog" :style="{ 'background-color': color }">
         <h1 class="dialog-title">{{ title }}</h1>
         <div @click="$emit('close')" class="dialog-close"><i class="fa fa-times fa-lg fa-fw"></i></div>
@@ -12,6 +13,7 @@
           <a @click="$emit('close')" class="dialog-close-button">Close</a>
         </div>
         </div>
+      </div>
       </div>
     </div>
   </transition>
@@ -47,12 +49,18 @@ export default Vue.extend({
   bottom: 0px;
 }
 
-.dialog {
-  position:absolute;
+.dialog-scroller {
+  position: fixed;
   top: 0px;
   left: 0px;
   right: 0px;
+  bottom: 0px;
   z-index: 11;
+  overflow-y: auto;
+}
+
+.dialog {
+  position: relative;
   margin: 20px;
   padding-bottom: 10px;
   color:white;
@@ -74,8 +82,8 @@ h1.dialog-title {
 }
 
 .dialog-content {
-  background-color: #fcfcfc;
-  color: #696969;
+  background-color: #2f2f34;
+  color: #dcdcdc;
 }
 .dialog-close {
   position: absolute;

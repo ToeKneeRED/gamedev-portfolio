@@ -2,104 +2,82 @@
   <div>
     <h1>Resume</h1>
 
-    <div class="paragraph">
-      I'm <strong>John Matrix</strong>, a former Delta Force operative with lots of experience, lots of training and huge muscles.
-      <br />After graduating from kindergarten, I've been enrolled in the army for 25 years, where I learned to destroy things in an amazing number of ways.
-      <br />I joined the Delta Force because I thought it was Greek lessons, but I quickly adapted to this unexpected environment and became a key element.
-      <br />I love teamwork, but I can also go in solo depending on the mission requirements.
-      <br />
-      <br />Right now I'm trying to find inner peace after I've read some personal development books. I'm looking for a monk job so if you have any opportunity feel free to 
-      <router-link to="/contact">contact me</router-link>.
-      <br />
-      <br />Besides war, I'm passionate about firearms, martial arts, explosions, push-ups and flowers.
+    <div style="margin-top:20px; margin-bottom:20px;">
+      <a class="download-link" href="/d/resume.pdf" target="_blank"><i class="fa fa-download fa-lg fa-fw"></i>PDF</a>
+      <div style="clear:both"></div>
+    </div>
 
-      <div style="margin-top:20px; margin-bottom:20px;">
-        <a class="download-link" href="d/resume-en.pdf" target="_blank"><i class="fa fa-download fa-lg fa-fw"></i> Download as PDF 🇬🇧</a>
-        <a class="download-link" href="d/cv-fr.pdf" target="_blank"><i class="fa fa-download fa-lg fa-fw"></i> Télécharger en PDF 🇫🇷</a>
-        <div style="clear:both"></div>
-      </div>
+    <div class="paragraph">
+      I'm <strong>Anthony Seymour</strong>, a warehouse worker that loves programming in C++ and C#!
+      <br />As a gameplay programmer, my curiosity fuels everything I do. I'm constantly seeking new challenges that push me to grow, adapt, and craft experiences that stay with players.
+      <br />While much of my experience has been solo, I value and look forward to opportunities to collaborate with others.
+      <br />Adaptability drives my work as a gameplay programmer. I'm quick to learn, experiment, and solve problems.
+      <br />Currently I have enjoyed working on a new toy project called ProjectKratos and learning about reverse engineering.
+      <br />I love both creating and playing video games! They're a core part of what I do and who I am.
+
     </div>
     <div class="photo">
-      <img src="img/resume-photo.png" alt="Photo of John" />
+      <img src="/img/resume-photo.png" alt="" />
     </div>
 
     <div style="clear:both"></div>
 
     <div class="full-content">
-      <h2>Work experience</h2>
-
-      <h3>Operation Classified - Delta Force</h3>
-      <h4>2018-2019</h4>
-
-      <div>It's classified so I can't speak about it.</div>
-
-      <div class="tech-stack">Firearms, knives, grenades, Hummer vehicle, parachute,...</div>
-
-      <h3>Operation Classified - Delta Force</h3>
-      <h4>2015-2017</h4>
-
-      <div>It's classified so I can't speak about it.</div>
-
-      <div class="tech-stack">Even more Firearms, knives, grenades, Hummer vehicle, parachute,...</div>
-
-      <h3>Operation Classified - Delta Force</h3>
-      <h4>2012-2015</h4>
-
-      <div>It's classified so I can't speak about it.</div>
-
-      <div class="tech-stack">Firearms, knives, grenades, Hummer vehicle, parachute,...</div>
-
-      <h2>Skills</h2>
-
-      <div class="skill-set">
-        <h3>Lethal</h3>
-        <SkillRate name="Handguns" :rate="5" />
-        <SkillRate name="Rifles" :rate="5" />
-        <SkillRate name="Shotguns" :rate="5" />
-        <SkillRate name="Machineguns" :rate="5" />
-        <SkillRate name="Missile launchers" :rate="5" />
-        <SkillRate name="Knives" :rate="5" />
-        <SkillRate name="Hand to hand combat" :rate="5" />
+      <div>
+        <h2>Professional Summary</h2>
+      </div>
+      <br /><div>Gameplay Programmer with hands-on experience developing gameplay systems, AI behaviors, and interactive mechanics in Unreal
+        Engine and Unity. Skilled in C++ and C#, brings strong problem-solving abilities, adaptability, and a focus on creating polished,
+        engaging player experiences. Passionate about pushing gameplay innovation and contributing to collaborative, fast-paced
+        development teams.
+      </div>
+      
+      <div>
+        <h2>Technical Skills</h2>
+      </div>
+      <div>
+        <ul>
+        <br /><strong><em>Programming Languages</em></strong>: C++, C#, Python, Lua
+        <br /><strong><em>Game Engines & Tools</em></strong>: Unreal Engine 4/5, Unity, Blender, Flecs, Gateware
+        <br /><strong><em>Version Control</em></strong>: Git, Perforce
+        <br /><strong><em>Development Practices</em></strong>: Agile, Scrum, collaborative workflows
+        <br /><strong><em>Optimization & Debugging</em></strong>: Performance/memory optimization, debugging with Unreal and Unity toolsets
+        </ul>
       </div>
 
+      <div>
+        <h2>Skills</h2>
+      </div>
+      <br />
       <div class="skill-set">
-        <h3>Non-lethal</h3>
-        <SkillRate name="Sneaking" :rate="1" />
-        <SkillRate name="Negotiation" :rate="1" />
-        <SkillRate name="Seduction" :rate="1" />
-        <SkillRate name="Sense of humor" :rate="2" />
+        <SkillRate name="Problem-Solving" :rate="5" />
+        <SkillRate name="Adaptability" :rate="5" />
+        <SkillRate name="Time Management" :rate="4" />
+        <SkillRate name="Collaboration" :rate="4" />
+        <SkillRate name="Iteration" :rate="4" />
+        <SkillRate name="Prioritization" :rate="4" />
+        <SkillRate name="Independence" :rate="5" />
+        <SkillRate name="Feedback Integration" :rate="4" />
+        <SkillRate name="Quality Focus" :rate="5" />
       </div>
       <div style="clear:both" />
 
       <h2>Education</h2>
+      <h3>Full Sail University (2024)</h3>
+      <h4>Bachelor's Degree in Game Development</h4>
+      <h3>Colonie Central High School (2018)</h3>
+      <h4>High school Diploma</h4>
 
-      <h3>Kindergarten - 1985</h3>
-      <h4>Kindergarten degree</h4>
-      <div>Specialty in bullying and fighting (58 wins, 58 K-O, 0 losses)</div>
-
-      <h2>Languages</h2>
-
-      <h3>American</h3>
-      <div>Basic knowledge but I know lots of one-liners</div>
-
-      <h3>That's it</h3>
-      <div>Who needs another language when you speak American?</div>
-
-
-      <h2>Besides...</h2>
+      <h2>Other Info</h2>
       <div>
-        <h3>I ❤️ Violence</h3>
-        <div>I find it really soothing to just shoot at bad guys</div>
+        <h3>Top 3 Games</h3>
+        <div>Subnautica, Skyrim, and Stardew Valley</div>
 
-        <h3>I 🧡 Sports</h3>
-        <div>I used to be thin but then I ingested 10 kilos of steroids and proteins a day while doing 1000 push-ups.</div>
+        <h3>Reverse Engineering</h3>
+        <div>I find it very interesting how games work under the hood and started learning more about reverse engineering.</div>
 
-        <h3>I 💛 Politics</h3>
-        <div>I hope I can have a career here someday but I might have temper issues.</div>
-
-        <h3>I 💚 Flowers</h3>
-        <div>Especially the big ones, with the trunk and leaves.</div>
-
+        <h3>Soft Peppermint Candy</h3>
+        <div>I can't ever eat just one.</div>
       </div>
     </div>
   </div>
@@ -146,8 +124,9 @@ h4 {
 }
 
 .download-link {
-  float:left;
+  float: left;
   margin-right: 50px;
+  font-size: 2em;
 }
 
 .full-content div {
